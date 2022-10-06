@@ -4,13 +4,12 @@ import { selectFilter, setSort } from "../../redux/slices/filter.slice";
 
 const sortType: string[] = ["relevance", "newest"];
 
-const Sorting = () => {
+const Sorting: React.FC = () => {
   const { sortBy } = useSelector(selectFilter);
   const dispatch = useDispatch();
 
-  const changeSelect = (event: any) => {
+  const changeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setSort(event.target.value));
-    console.log(event.target.value);
   };
 
   return (

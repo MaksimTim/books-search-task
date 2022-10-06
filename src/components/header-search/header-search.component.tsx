@@ -4,7 +4,7 @@ import Categories from "../categories/categories.component";
 import Sorting from "../sorting/sorting.component";
 import Search from "../search/search.component";
 
-const HeaderSearch = () => {
+const HeaderSearch: React.FC = () => {
   return (
     <div className="header-container">
       <h1>Search for books</h1>

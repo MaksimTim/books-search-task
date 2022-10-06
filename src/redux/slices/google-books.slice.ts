@@ -18,6 +18,16 @@ interface InitialBooksState {
   maxResults: number;
 }
 
+interface fetchArgs {
+  search: string;
+  sortBy: string;
+  categoryType: string;
+}
+
+interface fetchArgsLoad extends fetchArgs {
+  startIndex: number;
+}
+
 const initialState: InitialBooksState = {
   volumes: {
     items: [],
@@ -27,18 +37,6 @@ const initialState: InitialBooksState = {
   status: Status.SUCCESS,
   maxResults: 30,
   startIndex: 30,
-};
-
-type fetchArgs = {
-  search: string;
-  sortBy: string;
-  categoryType: string;
-};
-type fetchArgsLoad = {
-  search: string;
-  sortBy: string;
-  categoryType: string;
-  startIndex: number;
 };
 
 export const fetchBooks = createAsyncThunk(
@@ -90,10 +88,12 @@ const booksSlice = createSlice({
       state.startIndex += state.maxResults;
       state.status = Status.SUCCESS;
     });
+    builder.addCase(fetchBooksLoadMore.rejected, (state) => {
+      state.status = Status.ERROR;
+    });
   },
 });
 
-export const {} = booksSlice.actions;
 export default booksSlice.reducer;
 
 export const selectBooks = (state: RootState) => state.googleBooks;

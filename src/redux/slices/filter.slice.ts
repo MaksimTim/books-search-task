@@ -4,8 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   category: "all",
   sortBy: "relevance",
-  searchValue: '',
-  currentPage: 1,
+  searchValue: "",
 };
 
 export const filterSlice = createSlice({
@@ -20,9 +19,6 @@ export const filterSlice = createSlice({
     },
     setSearchValue: (state, action) => {
       state.searchValue = action.payload;
-    },
-    setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
     },
   },
 });

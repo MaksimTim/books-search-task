@@ -1,0 +1,14 @@
+.book-page {
+display: flex;
+  flex-direction: column;
+  margin: 10px;
+  background: #e2ff8d;
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+  }
+
+
+}

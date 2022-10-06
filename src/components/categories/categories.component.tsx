@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter, setCategory } from "../../redux/slices/filter.slice";
 
@@ -12,21 +12,20 @@ const categories: string[] = [
   "poetry",
 ];
 
-const Categories = () => {
+const Categories: React.FC = () => {
   const { category } = useSelector(selectFilter);
   const dispatch = useDispatch();
 
-  const chengeSelect = (event: any) => {
+  const changeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setCategory(event.target.value));
-    console.log(event.target.value);
   };
 
   return (
     <div>
       Categories
-      <select value={category} onChange={chengeSelect}>
-        {categories.map((catName, index) => (
-          <option key={index}>{catName}</option>
+      <select value={category} onChange={changeSelect}>
+        {categories.map((categoryName, index) => (
+          <option key={index}>{categoryName}</option>
         ))}
       </select>
     </div>

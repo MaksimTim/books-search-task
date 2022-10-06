@@ -1,5 +1,4 @@
 import React from "react";
-import "./content.styles.scss";
 import ContentItem from "../content-item/content-item.component";
 import { useSelector } from "react-redux";
 import {
@@ -9,6 +8,7 @@ import {
 } from "../../redux/slices/google-books.slice";
 import { selectFilter } from "../../redux/slices/filter.slice";
 import { useAppDispatch } from "../../redux/store";
+import "./content.styles.scss";
 
 const Content: React.FC = () => {
   const { status, volumes, startIndex } = useSelector(selectBooks);
@@ -18,7 +18,6 @@ const Content: React.FC = () => {
 
   const getVolumesMore = async () => {
     const categoryType = category !== "all" ? `+subject:${category}` : "";
-
     dispatch(fetchBooksLoadMore({ search, sortBy, categoryType, startIndex }));
   };
 
@@ -32,9 +31,10 @@ const Content: React.FC = () => {
 
   return (
     <div className="content-container">
-      <h2>total count: {totalItems}</h2>
+      <h2>Total count: {totalItems}</h2>
       <div className="content-container__items">{volumesItems}</div>
       {status === Status.LOADING && <h2>Loading</h2>}
+      {status === Status.ERROR && <h2>Some error</h2>}
       {totalItems !== 0 && (
         <div className="content-container__button" onClick={loadMoreClick}>
           <h2>Load more</h2>

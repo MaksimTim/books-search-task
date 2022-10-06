@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Content from "../../components/content/content.component";
-
 import HeaderSearch from "../../components/header-search/header-search.component";
 
-const HomePage = () => {
-
+const HomePage: React.FC = () => {
   return (
     <div>
-<HeaderSearch/>
-
-<Content  />
+      <HeaderSearch />
+      <Content />
     </div>
   );
 };
