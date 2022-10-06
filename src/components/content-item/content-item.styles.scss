@@ -1,0 +1,33 @@
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 300px;
+  width: 230px;
+  margin: 10px;
+  background: #e2ff8d;
+
+  &__image {
+    padding: 10px;
+    height: 150px;
+  }
+
+  &__categories {
+    height: 22px;
+    align-self: start;
+    padding: 0px 6px;
+    color: #565656;
+  }
+  &__title {
+    align-self: start;
+    font-size: 0.8rem;
+    padding: 0px 4px;
+    height: 80px;
+  }
+  &__authors {
+    align-self: start;
+    padding: 0px 4px;
+    color: #565656;
+  }
+}

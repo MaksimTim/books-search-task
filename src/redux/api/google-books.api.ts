@@ -9,13 +9,13 @@ export const googleBooksApi = createApi({
     }),
     endpoints: (build) => ({
         getVolumes: build.query({
-            query: (queryParams) => ({
+            query: (searchParam) => ({
                 url: "volumes",
                 params: {
+                    q: searchParam,
+                    maxResults: 10,
                     key: apiKey,
-                    maxResults: 30,
-                    q: queryParams.searchParam,
-                    orderBy: queryParams.orderBy,
+                    /*orderBy: queryParams.orderBy,*/
                 },
             }),
         }),
@@ -31,4 +31,4 @@ export const googleBooksApi = createApi({
 });
 
 
-export const { useLazyGetVolumesQuery, useGetBookQuery } = googleBooksApi
+export const { useLazyGetVolumesQuery, useGetBookQuery  } = googleBooksApi
